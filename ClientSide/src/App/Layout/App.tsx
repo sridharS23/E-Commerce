@@ -1,8 +1,7 @@
 import React from "react"
-import type { Product } from "../Models/Products";
-import Catalog from "../../Features/catalog/Catalog";
 import NavBar from "./NavBar";
 import { Box, Container, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { Outlet } from "react-router-dom";
 
 // const products = [
 //     {name: 'Product 1', price: 29.99, description: 'This is product 1'},
@@ -16,7 +15,6 @@ import { Box, Container, createTheme, CssBaseline, ThemeProvider } from "@mui/ma
 // {name: 'Product 3', price: 19.99, description: 'This is product 3'}]) // useState initializer
 
 function  App() {
- const [products, setProducts] = React.useState<Product[]>([]);
  const [darkMode, setDarkMode] = React.useState(false);
 //  const darkMode = true;
  const palatteType = darkMode ? 'dark' : 'light';
@@ -32,16 +30,6 @@ const toggleDarkMode = () => {
   setDarkMode(!darkMode);
 }
 
-  React.useEffect(() => {
-    fetch("https://localhost:5002/api/products")
-      .then(response => response.json())
-      .then(data => setProducts(data))
-      .catch(error => console.error('Error fetching products:', error));
-
-      return () => {
-        // Cleanup if needed when component unmounts
-      }
-  }, []) // empty dependency array to run only once on mount
 
 
 
@@ -70,7 +58,7 @@ const toggleDarkMode = () => {
   py: 4
     }} >
     <Container maxWidth="xl" sx={{mt: 10}}>
-    <Catalog products={products} />
+    <Outlet/>
     </Container>
     </Box>
     </ThemeProvider>

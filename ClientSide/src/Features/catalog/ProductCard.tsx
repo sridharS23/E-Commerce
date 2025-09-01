@@ -1,5 +1,10 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
+// Update the import path below to the correct location of your Product type
+// For example, if the file is actually at 'src/App/Models/Products.ts', use the following:
 import type { Product } from "../../App/Models/Products"
+import { Link } from "react-router-dom"
+// Or, if you have a types folder, adjust accordingly:
+// import type { Product } from "../../types/Products"
 
 type props ={
     product: Product
@@ -33,7 +38,7 @@ export default function productCard({product}:props) {
             <CardActions 
             sx={{justifyContent:"space-between"}}>
                 <Button >Add to cart</Button>
-                <Button >View</Button>
+                <Button component={Link} to={`/catalog/${product.id}`}>View</Button>
             </CardActions>
             </Card>
     

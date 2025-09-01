@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+// Update the import path below to the correct location of your Products model
 import type { Product } from "../../App/Models/Products";
 import ProductCard from "./ProductCard";
 
