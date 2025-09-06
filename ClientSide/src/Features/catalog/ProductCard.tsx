@@ -1,15 +1,14 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
-// Update the import path below to the correct location of your Product type
-// For example, if the file is actually at 'src/App/Models/Products.ts', use the following:
 import type { Product } from "../../App/Models/Products"
 import { Link } from "react-router-dom"
-// Or, if you have a types folder, adjust accordingly:
-// import type { Product } from "../../types/Products"
+import { useAddBasketItemMutation } from "../basket/basketApi"
+import { currencyFormat } from "../../lib/util"
 
 type props ={
     product: Product
 }
-export default function productCard({product}:props) {
+export default function ProductCard({ product }:props) {
+  const [addBasketItem, { isLoading }] = useAddBasketItemMutation();
   return (
     
      <Card
@@ -32,12 +31,15 @@ export default function productCard({product}:props) {
                 {product.name}
                </Typography>
                <Typography variant="h6" sx={{color :"secondary.main"}}>
-                ${(product.price/100).toFixed(2)}
+                {currencyFormat(product.price)}
                </Typography>
             </CardContent>
             <CardActions 
             sx={{justifyContent:"space-between"}}>
-                <Button >Add to cart</Button>
+
+                <Button 
+                disabled={isLoading} 
+                onClick={() => addBasketItem({product, quantity: 1})} >Add to cart</Button>
                 <Button component={Link} to={`/catalog/${product.id}`}>View</Button>
             </CardActions>
             </Card>

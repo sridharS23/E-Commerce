@@ -12,15 +12,15 @@ namespace API.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<List<Products>>> GetProducts()
+        public async Task<ActionResult<List<Product>>> GetProducts()
         {
-            return await context.Product.ToListAsync();
+            return await context.Products.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Products>> GetProduct(int id)
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var product = await context.Product.FindAsync(id);
+            var product = await context.Products.FindAsync(id);
             if (product == null)
                 return NotFound();
                     return product;

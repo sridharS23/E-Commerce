@@ -21,7 +21,7 @@ app.UseMiddleware<ExecptionMiddleware>();
 
 app.UseCors(options =>
 {
-    options.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:3000");
+    options.AllowAnyHeader().AllowAnyMethod().AllowCredentials() .WithOrigins("https://localhost:3000");
 });
 
 app.MapControllers();

@@ -19,9 +19,9 @@ public class DbInitializer
     {
         context.Database.Migrate();
 
-        if (context.Product.Any()) return;
+        if (context.Products.Any()) return;
 
-        var products = new List<Products> // List of products to seed the database... i changed
+        var products = new List<Product> 
         {
                     new() {
                     name = "Angular Speedster Board 2000",
@@ -203,7 +203,7 @@ public class DbInitializer
                 },
         };
 
-        context.Product.AddRange(products);
+        context.Products.AddRange(products);
         context.SaveChanges();
     }
 }
