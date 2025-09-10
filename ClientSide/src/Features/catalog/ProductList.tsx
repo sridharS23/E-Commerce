@@ -1,5 +1,4 @@
-import { Box } from "@mui/material";
-// Update the import path below to the correct location of your Products model
+import { Grid2 } from "@mui/material";
 import type { Product } from "../../App/Models/Products";
 import ProductCard from "./ProductCard";
 
@@ -10,10 +9,13 @@ type props = {
   
 export default function ProductList({products}:props) {
   return (
-   <Box sx={{display: "flex", flexWrap: "wrap", gap: 3, justifyContent: "center"}}>
-        {products.map(products => (
-         <ProductCard key={products.id} product={products}/>
+   <Grid2 container spacing={3}>
+        {products.map(product => (
+          <Grid2 size={3} display='flex' key={product.id}>
+            <ProductCard product={product}/>
+          </Grid2>
+         
         ))}
-    </Box>
+    </Grid2>
   )
 }

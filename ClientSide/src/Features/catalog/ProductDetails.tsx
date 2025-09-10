@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Button, Divider, Grid2,  Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
-import { useFetchProductQuery } from "./catalogAPI";
+import { useFetchProductDetailsQuery } from "../catalog/catalogAPI";
 import { useAddBasketItemMutation, useFetchBasketQuery, useRemoveBasketItemMutation } from "../basket/basketApi";
 import { useEffect, useState, type ChangeEvent, } from "react";
 
@@ -18,7 +18,7 @@ export default function ProductDetails() {
   }, [item]);
 
 
-const {data: product, isLoading} = useFetchProductQuery(id ? + id : 0);
+const {data: product, isLoading} = useFetchProductDetailsQuery(id ? + id : 0);
 
 if (!product || isLoading) return <div>Loading...</div>;
 
@@ -95,3 +95,4 @@ const productDetails = [
     
   )
 }
+
