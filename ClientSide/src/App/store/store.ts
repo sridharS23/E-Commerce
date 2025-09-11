@@ -6,6 +6,7 @@ import { uiSlice } from "../Layout/uiSlice";
 import { errorApi } from "../../Features/about/errorApi";
 import { basketApi } from "../../Features/basket/basketApi";
 import { catalogSlice } from "../../Features/catalog/catalogSlice";
+import { accountApi } from "../../Features/account/accountApi";
 
 
 export function configureTheStore() {
@@ -16,14 +17,18 @@ export const store = configureStore({
     reducer: {  [catalogApi.reducerPath]: catalogApi.reducer,
                 [errorApi.reducerPath]: errorApi.reducer,
                 [basketApi.reducerPath]: basketApi.reducer,
+                [accountApi.reducerPath]: accountApi.reducer,
                 counter: counterslice.reducer, 
                 ui: uiSlice.reducer,
                 catalog: catalogSlice.reducer
             },
             middleware: (getDefaultMiddleware) => 
-            getDefaultMiddleware().concat(catalogApi.middleware,
-             errorApi.middleware,
-            basketApi.middleware),
+            getDefaultMiddleware().concat(
+            catalogApi.middleware,
+            errorApi.middleware,
+            basketApi.middleware,
+            accountApi.middleware
+            )
     
 });         
 
