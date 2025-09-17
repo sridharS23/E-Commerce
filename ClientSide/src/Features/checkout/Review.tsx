@@ -1,13 +1,5 @@
 import {
-  Box,
-  Divider,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-  Typography
-} from "@mui/material";
+  Box,Divider,Table,TableBody,TableCell, TableContainer,TableRow, Typography} from "@mui/material";
 import { currencyFormat } from "../../lib/util";
 import type { ConfirmationToken } from "@stripe/stripe-js";
 import { useBasket } from "../../lib/hooks/useBasket";
