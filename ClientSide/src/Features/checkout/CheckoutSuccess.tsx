@@ -59,7 +59,7 @@ export default function CheckoutSuccess() {
 
 
       <Box display='flex' justifyContent='flex-start' gap={2}>
-        <Button variant="contained" color="primary"component={Link} to={`/orders/${order.id}`}>View your order</Button>
+        <Button variant="contained" color="primary"component={Link} to={`/order/${order.id}`}>View your order</Button>
         <Button component={Link} to='/catalog' variant="outlined" color="primary">Continue shopping</Button>
       </Box>
       </>

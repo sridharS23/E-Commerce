@@ -7,7 +7,7 @@ export const  orderApi = createApi({
     baseQuery: baseQueryWithErrorHandling,
     endpoints: (builder) => ({
         fetchOrders: builder.query<Order[], void>({
-            query: () => 'orders'
+            query: () => 'order'
         }),
         fetchOrderDetailed: builder.query<Order, number>({
             query: (id) => ({
