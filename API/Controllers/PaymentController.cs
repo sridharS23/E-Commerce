@@ -25,8 +25,8 @@ public class PaymentController(PaymentServices paymentServices, StoreContext con
 
         if (intent == null) return BadRequest("Problem creating payment intent");
 
-        basket.PaymentIntentId = intent.Id;
-        basket.ClientSecret = intent.ClientSecret;
+        basket.PaymentIntentId ??= intent.Id;
+        basket.ClientSecret ??= intent.ClientSecret;
 
         if (context.ChangeTracker.HasChanges())
         {
@@ -37,7 +37,7 @@ public class PaymentController(PaymentServices paymentServices, StoreContext con
 
 
 
-        return basket.ToDo();
+        return basket.ToDto();
     }
 
 

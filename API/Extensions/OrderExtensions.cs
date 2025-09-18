@@ -7,7 +7,7 @@ namespace API.Extensions;
 
 public static class OrderExtension
 {
-    public static IQueryable<OrderDto> ProjectToDo(this IQueryable<Order> query)
+    public static IQueryable<OrderDto> ProjectToDto(this IQueryable<Order> query)
     {
         return query.Select(order => new OrderDto
         {

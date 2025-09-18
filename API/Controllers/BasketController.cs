@@ -17,7 +17,7 @@ public class BasketController(StoreContext context) : BaseApiController
 
         if (basket == null) return NoContent();
 
-        return basket.ToDo();
+        return basket.ToDto();
     }
     [HttpPost]
     public async Task<ActionResult<BasketDto>> AddItemToBasket(int productId, int quantity)
@@ -35,7 +35,7 @@ public class BasketController(StoreContext context) : BaseApiController
         // save changes
         var result = await context.SaveChangesAsync() > 0;
 
-        if (result) return CreatedAtAction(nameof(GetBasket), basket.ToDo());
+        if (result) return CreatedAtAction(nameof(GetBasket), basket.ToDto());
 
         return BadRequest("Problem to updating Basket");
     }
