@@ -11,7 +11,7 @@ export const catalogApi = createApi({
     reducerPath: "catalogApi",
     baseQuery: baseQueryWithErrorHandling,
     endpoints: (builder) => ({
-        fetchProducts: builder.query<{items: Product[], pagination: Pagination}, ProductParams>({
+        fetchProducts: builder.query<{items: Product[], pagination: Pagination | null}, ProductParams>({
             query: (productParams) => {
                 return {
                     url: 'products',
@@ -33,4 +33,4 @@ export const catalogApi = createApi({
         })
     });
 
-    export const { useFetchProductDetailsQuery, useLazyFetchProductsQuery, useLazyFetchFiltersQuery } = catalogApi;
+    export const { useFetchProductDetailsQuery, useFetchProductsQuery, useFetchFiltersQuery } = catalogApi;
